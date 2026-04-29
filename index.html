@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lahjouji Dental Clinic — Votre avis compte</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --mint: #e8f5f0;
+    --mint-mid: #b2ddd0;
+    --mint-deep: #4aab8e;
+    --mint-dark: #1e6e58;
+    --cream: #faf9f6;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --white: #ffffff;
+    --shadow: 0 4px 24px rgba(74,171,142,0.10);
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.25rem;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, #d6f0e8 0%, var(--cream) 65%);
+  }
+
+  .card {
+    background: var(--white);
+    border-radius: 28px;
+    padding: 2.5rem 2rem 2rem;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: var(--shadow);
+    text-align: center;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo-ring {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--mint);
+    margin: 0 auto 1.25rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+  }
+
+  .clinic-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--mint-dark);
+    letter-spacing: 0.01em;
+    margin-bottom: 0.3rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .divider {
+    width: 40px; height: 2px;
+    background: var(--mint-mid);
+    margin: 0 auto 1.8rem;
+    border-radius: 2px;
+  }
+
+  .prompt {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .prompt-sub {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .emoji-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .emoji-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: 16px;
+    border: 1.5px solid transparent;
+    background: var(--mint);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+  }
+
+  .emoji-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74,171,142,0.15);
+    border-color: var(--mint-mid);
+  }
+
+  .emoji-btn:active { transform: scale(0.98); }
+
+  .emoji-btn .icon { font-size: 1.8rem; flex-shrink: 0; }
+
+  .emoji-btn .label {
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .emoji-btn .label strong {
+    display: block;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--mint-dark);
+    margin-bottom: 1px;
+  }
+
+  /* Happy buttons — slightly different tint */
+  .btn-happy { background: #e9f6f1; }
+  .btn-happy:hover { background: #d8f0e9; border-color: #8fd3be; }
+
+  /* Neutral/unhappy */
+  .btn-neutral { background: #f5f5f3; }
+  .btn-neutral:hover { background: #eeede9; border-color: #c8c7c2; }
+
+  .footer-note {
+    font-size: 0.78rem;
+    color: #b0b0b0;
+    margin-top: 1.5rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo-ring">🦷</div>
+  <p class="clinic-name">Lahjouji Dental Clinic</p>
+  <p class="subtitle">Casablanca · Votre sourire, notre priorité</p>
+  <div class="divider"></div>
+
+  <p class="prompt">Comment s'est passée votre visite ?</p>
+  <p class="prompt-sub">Sélectionnez l'option qui correspond le mieux à votre expérience</p>
+
+  <div class="emoji-grid">
+
+    <!-- HAPPY — leads to Google Review -->
+    <a class="emoji-btn btn-happy" href="https://www.google.com/maps/place/Lahjouji+Dental+Clinic+-+Dr.+LAHJOUJI+Afaf/@34.2581479,-6.5927918,16z/data=!4m6!3m5!1s0xda759de877b5f15:0x37ac733eaafc0415!8m2!3d34.2581479!4d-6.5927918!16s%2Fg%2F11vzpk4w6v?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+      <span class="icon">🤩</span>
+      <span class="label">
+        <strong>Excellente</strong>
+        Très satisfait(e) — je recommande vivement
+      </span>
+    </a>
+
+    <a class="emoji-btn btn-happy" href="https://www.google.com/maps/place/Lahjouji+Dental+Clinic+-+Dr.+LAHJOUJI+Afaf/@34.2581479,-6.5927918,16z/data=!4m6!3m5!1s0xda759de877b5f15:0x37ac733eaafc0415!8m2!3d34.2581479!4d-6.5927918!16s%2Fg%2F11vzpk4w6v?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+      <span class="icon">😊</span>
+      <span class="label">
+        <strong>Très bonne</strong>
+        Bonne expérience globale, je suis content(e)
+      </span>
+    </a>
+
+    <!-- NEUTRAL/UNHAPPY — leads to feedback form -->
+    <a class="emoji-btn btn-neutral" href="feedback.html">
+      <span class="icon">😐</span>
+      <span class="label">
+        <strong>Correcte</strong>
+        Quelques points à améliorer selon moi
+      </span>
+    </a>
+
+    <a class="emoji-btn btn-neutral" href="feedback.html">
+      <span class="icon">😔</span>
+      <span class="label">
+        <strong>Décevante</strong>
+        Pas tout à fait ce que j'attendais
+      </span>
+    </a>
+
+  </div>
+
+  <p class="footer-note">Votre avis nous aide à nous améliorer chaque jour 🌿</p>
+</div>
+
+</body>
+</html>
