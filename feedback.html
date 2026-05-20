@@ -238,6 +238,29 @@
     margin: 0 auto;
   }
 
+
+  input[type="text"], input[type="tel"] {
+    width: 100%;
+    border: 1.5px solid #eee;
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    background: #fafafa;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  input[type="text"]:focus, input[type="tel"]:focus {
+    border-color: var(--mint-deep);
+    background: var(--white);
+  }
+  input[type="text"]::placeholder, input[type="tel"]::placeholder { color: #b8b8b8; }
+  .contact-row {
+    display: flex; gap: 0.75rem;
+  }
+  .contact-row > div { flex: 1; }
+
   /* ERROR */
   .error-msg {
     background: #fff0f0;
@@ -262,7 +285,7 @@
       <div class="logo-ring">🦷</div>
       <p class="clinic-name">Lahjouji Dental Clinic</p>
       <p class="form-title">Aidez-nous à nous améliorer</p>
-      <p class="form-sub">3 petites questions — moins d'une minute</p>
+      <p class="form-sub">5 questions — moins de 2 minutes</p>
       <div class="divider"></div>
     </div>
 
@@ -318,6 +341,26 @@
       <textarea id="q4" rows="3" placeholder="Partagez librement ce que vous souhaitez..."></textarea>
     </div>
 
+
+    <!-- CONTACT -->
+    <div class="question-block">
+      <p class="question-label">
+        <span class="q-num">5</span>
+        Vos coordonnées (facultatif)
+      </p>
+      <div style="display:flex;flex-direction:column;gap:0.65rem;">
+        <div class="contact-row">
+          <div>
+            <input type="text" id="c-prenom" placeholder="Prénom (facultatif)" />
+          </div>
+          <div>
+            <input type="text" id="c-nom" placeholder="Nom (facultatif)" />
+          </div>
+        </div>
+        <input type="tel" id="c-tel" placeholder="Téléphone (facultatif)" />
+      </div>
+    </div>
+
     <button class="submit-btn" id="submitBtn" onclick="submitForm()">Envoyer mon retour →</button>
     <div class="error-msg" id="errorMsg">Veuillez répondre aux 3 premières questions avant d'envoyer.</div>
     <p class="privacy-note">🔒 Votre retour est confidentiel et visible uniquement par l'équipe du cabinet.</p>
@@ -335,7 +378,7 @@
   // ─────────────────────────────────────────────────────────────────────────
   // CONFIGURATION — remplacez par l'URL de votre Apps Script déployé
   // ─────────────────────────────────────────────────────────────────────────
-  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw7ZGgLnfjSVIMfXRpLoq25JZFJVLqzm_r-pZdB68KZjPQCRqFv1NuvZQf5XjM6yHT9/exec";
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw8nBlzQQIlTZ8nUOqdcxcddBSTUefDhFGapDDpx3hMMgt5EvIqNN3-uRUrq0oTy2QC/exec";
   // ─────────────────────────────────────────────────────────────────────────
 
   function submitForm() {
@@ -343,6 +386,9 @@
     const q2 = document.querySelector('input[name="q2"]:checked');
     const q3 = document.querySelector('input[name="q3"]:checked');
     const q4 = document.getElementById('q4').value.trim();
+    const prenom = document.getElementById('c-prenom').value.trim();
+    const nom = document.getElementById('c-nom').value.trim();
+    const tel = document.getElementById('c-tel').value.trim();
     const errorMsg = document.getElementById('errorMsg');
 
     if (!q1 || !q2 || !q3) {
@@ -360,7 +406,10 @@
       q1: q1.value,
       q2: q2.value,
       q3: q3.value,
-      q4: q4 || '—'
+      q4: q4 || '—',
+      prenom: prenom,
+      nom: nom,
+      tel: tel
     };
 
     fetch(APPS_SCRIPT_URL, {
